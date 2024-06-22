@@ -14,12 +14,11 @@ function SideBar({notes, setNotes, handleClick}) {
     setInputValue(event.target.value)
   }
   return (
-    <div>
-      <h1>Sidebar</h1>
+    <div className='sidebar'>
       {notes.map((note, index) => (
        <div onClick={() => handleClick(index)}>{note.title}</div>
       ))}
-      <input type="text" value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown}/>
+      <input type="text" placeholder={"Enter a title here..."} value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown}/>
     </div>
   )
 }
@@ -33,16 +32,15 @@ function Note({note, setNotes, selectedNoteIndex}) {
   })
   }
   return (
-    <div>
-      <h1>Notes</h1>
-      <input type="text" value={note?.text || ''} onChange={handleChange}/>
+    <div className='notes'>
+      <textarea rows='30' className="full-size-input" type="text" placeholder={"Enter your notes here..."} value={note?.text || ''} onChange={handleChange}/>
     </div>
   )
 }
 
 function Notes() {
   const [notes, setNotes] = useState([{
-    title: 'Note title 1', text: 'Note text 1'
+    title: '', text: ''
   }])
   const [selectedNoteIndex, setSelectedNoteIndex] = useState(0)
   const handleClick = (index) => {
@@ -52,8 +50,11 @@ function Notes() {
 
   return (
     <div>
-      <SideBar notes={notes} setNotes={setNotes} handleClick={handleClick}/>
+      <h1>Notes</h1>
+    <div className='grid-container'>
+      <SideBar notes={notes} setNotes={setNotes} handleClick={handleClick} />
       <Note note={notes[selectedNoteIndex]} selectedNoteIndex={selectedNoteIndex} setNotes={setNotes}/>
+    </div>
     </div>
   )
 }

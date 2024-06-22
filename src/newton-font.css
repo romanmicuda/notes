@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Newton';
+    src: url('./fonts/newton.woff2') format('woff2'),
+         url('./fonts/newton.woff') format('woff');
+    /* Add more src lines as needed for other formats */
+    font-weight: normal;
+    font-style: normal;
+  }
